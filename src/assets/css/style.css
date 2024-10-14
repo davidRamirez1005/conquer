@@ -36,7 +36,15 @@ body {
   animation-range: entry 25% cover 30%;
   animation-fill-mode: both;
 } */
-
+.aboutUs{
+  display: flex;
+  position: absolute;
+  top: 80rem;
+}
 @media (max-width: 800px) {
- 
+  .aboutUs{
+    display: flex;
+    position: absolute;
+    top: 100rem;
+  }
 }

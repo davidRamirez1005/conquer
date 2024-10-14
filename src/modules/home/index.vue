@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="redirigir-contacto" @click="scrollToContact">
+    <div id="home" class="redirigir-contacto" @click="scrollToContact">
       <i class="fas fa-phone-alt"></i>
     </div>
     <div>
@@ -12,28 +12,78 @@
     <div>
       <Highlights />
     </div>
-    <div id="aboutUs">
+    <div id="aboutUs" class="aboutUs"></div>
+    <div>
       <aboutUs />
+    </div>
+    <div class="container-misionvision">
+      <VisionMision />
+    </div>
+    <div class="conatiner-values">
+      <h2 class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl text-center">{{translations.valores}}</h2>
+      <div class="values">
+        <Values />
+      </div>
+    </div>
+    <div>
+      <hr class="my-8 border-t-2 border-gray-300 border-dashed" />
+    </div>
+    <div class="container">
+      <div>
+        <h2 class="mt-2 mb-3 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl text-center">{{translations.testimonios}}</h2>
+      </div>
+      <div class="testimonials-wrapper">
+        <Testimonials 
+        :image="bañoPersona" 
+          title="Gerente" 
+          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean convallis magna quis lectus fermentum, quis scelerisque orci pellentesque. Duis id porta justo. Sed ac enim id justo tincidunt hendrerit id ac lectus. Pellentesque maximus posuere tortor vitae consequat."
+        />
+        <Testimonials 
+          :image="cocina3" 
+          title="Desarrollador" 
+          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean convallis magna quis lectus fermentum, quis scelerisque orci pellentesque. Duis id porta justo."
+        />
+        <Testimonials 
+        :image="baño4" 
+          title="Diseñador" 
+          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean convallis magna quis lectus fermentum."
+        />
+      </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div class="contacto" id="contactos">
+      <Contact />
     </div>
   </div>
 </template>
 
 <script setup>
 import { ref, watchEffect, onMounted } from "vue";
-import Banner from "./components/Banner.vue";
+import Banner from "../../shared/components/Banner.vue";
 import SectionMain from "./components/SectionMain.vue";
 import Highlights from "./components/Highlights.vue";
 import aboutUs from "./components/AboutUs.vue";
+import VisionMision from "./components/VisionMision.vue";
+import Testimonials from "./components/Testimonials.vue";
+import Values from "./components/Values.vue";
+import Contact from "./components/Contact.vue";
 import VueMultiselect from 'vue-multiselect';
 import 'vue-multiselect/dist/vue-multiselect.css';
+import { useLanguageProvider } from '../../store/useLanguage.js';
+import cocina3 from '../../assets/img/cocina3.png';
+import baño4 from '../../assets/img/baño4.png';
+import bañoPersona from '../../assets/img/bañoPersona.png';
+
+const { translations } = useLanguageProvider();
 
 const scrollToContact = () => {
-  const contactSection = document.getElementById('section-contacto');
+  const contactSection = document.getElementById('contactos');
   if (contactSection) {
     contactSection.scrollIntoView({ behavior: 'smooth' });
   }
 };
-
 
 </script>
 
@@ -46,5 +96,60 @@ const scrollToContact = () => {
   color: #E3B100;
   cursor: pointer;
   z-index: 999;
+}
+hr {
+  border: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #11085c, transparent);
+  margin: 3rem 0;
+  margin-top: 5rem
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 5rem;
+}
+
+.testimonials-wrapper {
+  display: flex;
+  gap: 6rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 3rem;
+}
+
+.values{
+  margin-top: 3rem;
+}
+.conatiner-values{
+  margin-top: 5rem;
+}
+.contacto{
+  margin-top: 5rem;
+}
+.container-misionvision{
+  margin-top: -5rem;
+}
+@media (max-width: 600px) {
+  .testimonials-wrapper {
+    gap: 4rem;
+    width: 19rem;
+  }
+}
+
+@media (max-width: 800px) {
+  hr {
+    margin-top: 3rem
+  }
+  .container {
+    margin-top: 0rem;
+  }
+  .conatiner-values{
+    margin-top: 2rem;
+  }
+  .container-misionvision{
+  margin-top: 0rem;
+}
 }
 </style>

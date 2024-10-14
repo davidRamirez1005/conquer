@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-white py-8 sm:py-32">
+    <div class="bg-white py-8 sm:py-20">
       <div class="mx-auto max-w-7xl px-6 lg:px-8">
         <div class="mx-auto max-w-2xl lg:text-center">
           <h2 class="text-base font-semibold leading-7" style="color: #E3B100;">{{ translations.destacados }}</h2>

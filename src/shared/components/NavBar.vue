@@ -15,11 +15,12 @@
       </div>
       <PopoverGroup class="hidden lg:flex lg:gap-x-12">
         <router-link 
-              v-for="item in navigation" 
-              :key="item.name" 
-              :to="item.href" 
-              class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-5 text-gray-900 hover:bg-gray-50">
-              {{ translations[item.name] }}
+          v-for="item in navigation" 
+          :key="item.name" 
+          :to="item.href" 
+          @click.prevent="handleScroll(item.name)" 
+          class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-5 text-gray-900 hover:bg-gray-50">
+          {{ translations[item.name] }}
         </router-link>
         <Popover class="relative">
           <PopoverButton class="flex items-center text-gray-700">
@@ -41,7 +42,7 @@
     </nav>
     <Dialog class="lg:hidden" @close="mobileMenuOpen = false" :open="mobileMenuOpen">
       <div class="fixed inset-0 z-10" />
-      <DialogPanel class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+      <DialogPanel style="height: 60% !important;" class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
         <div class="flex items-center justify-between">
           <a href="#" class="-m-1.5 p-1.5">
             <span class="sr-only">{{ translations.companyName }}</span>
@@ -56,11 +57,12 @@
           <div class="-my-6 divide-y divide-gray-500/10">
             <div class="space-y-2 py-6">
               <router-link 
-                  v-for="item in navigation" 
-                  :key="item.name" 
-                  :to="item.href" 
-                  class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
-                  {{ translations[item.name] }}
+                v-for="item in navigation" 
+                :key="item.name" 
+                :to="item.href" 
+                @click.prevent="handleScroll(item.name)" 
+                class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-5 text-gray-900 hover:bg-gray-50">
+                {{ translations[item.name] }}
               </router-link>
               <Popover class="relative">
                 <PopoverButton class="flex items-center text-gray-700">
@@ -69,10 +71,10 @@
                 </PopoverButton>
                 <PopoverPanel class="rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5">
                 <div class="py-1">
-                  <a href="#" @click="changeLanguage('es')" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                  <a href="#" @click="changeLanguage('es'); mobileMenuOpen = false" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                     <i class="fa-solid fa-flag"></i> Español
                   </a>
-                  <a href="#" @click="changeLanguage('en')" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                  <a href="#" @click="changeLanguage('en'); mobileMenuOpen = false" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                     <i class="fa-solid fa-flag-usa"></i> English
                   </a>
                 </div>
@@ -116,6 +118,42 @@ const navigation = [
   { name: 'projects', href: '/proyectos' },
   { name: 'contactUs', href: '/' },
 ];
+
+const handleScroll = (name) => {
+
+  if (name === 'contactUs') {
+    router.push('/').then(() => {
+      const contactSection = document.getElementById('contactos');
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  }
+  if (name === 'services') {
+    router.push('/servicios').then(() => {
+      const contactSection = document.getElementById('inicio-servicios');
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  }
+  if (name === 'projects') {
+    router.push('/proyectos').then(() => {
+      const contactSection = document.getElementById('inicio-proyectos');
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  }
+  if (name === 'aboutUs') {
+    router.push('/').then(() => {
+      const aboutUsSection = document.getElementById('aboutUs');
+      if (aboutUsSection) {
+        aboutUsSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  }
+};
 
 const { translations, changeLanguage } = useLanguageProvider();
 </script>

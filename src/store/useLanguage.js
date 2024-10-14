@@ -5,12 +5,15 @@ import en from '../utils/translations/en.json';
 const LanguageSymbol = Symbol('language');
 
 export const useLanguage = () => {
-  const language = ref('es'); // Idioma por defecto
-  const translations = ref(es);
+  // Leer el idioma desde localStorage o usar 'es' por defecto
+  const storedLanguage = localStorage.getItem('language') || 'es';
+  const language = ref(storedLanguage);
+  const translations = ref(storedLanguage === 'es' ? es : en);
 
   const changeLanguage = (lang) => {
     language.value = lang;
     translations.value = lang === 'es' ? es : en;
+    localStorage.setItem('language', lang); // Guardar el idioma en localStorage
   };
 
   provide(LanguageSymbol, { language, translations, changeLanguage });
