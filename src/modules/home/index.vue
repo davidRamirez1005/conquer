@@ -3,38 +3,38 @@
     <div id="home" class="redirigir-contacto" @click="scrollToContact">
       <i class="fas fa-phone-alt"></i>
     </div>
-    <div>
+    <div class="fade">
       <Banner />
     </div>
-    <div>
+    <div class="fade">
       <SectionMain />
     </div>
-    <div>
+    <div class="fade">
       <Highlights />
     </div>
-    <div id="aboutUs" class="aboutUs"></div>
-    <div>
+    <div id="aboutUs" class="aboutUs fade"></div>
+    <div class="fade">
       <aboutUs />
     </div>
-    <div class="container-misionvision">
+    <div class="container-misionvision fade">
       <VisionMision />
     </div>
-    <div class="conatiner-values">
-      <h2 class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl text-center">{{translations.valores}}</h2>
+    <div class="conatiner-values fade">
+      <h2 class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl text-center">{{ translations.valores }}</h2>
       <div class="values">
         <Values />
       </div>
     </div>
-    <div>
+    <div class="fade">
       <hr class="my-8 border-t-2 border-gray-300 border-dashed" />
     </div>
-    <div class="container">
+    <div class="container fade">
       <div>
-        <h2 class="mt-2 mb-3 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl text-center">{{translations.testimonios}}</h2>
+        <h2 class="mt-2 mb-3 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl text-center">{{ translations.testimonios }}</h2>
       </div>
       <div class="testimonials-wrapper">
         <Testimonials 
-        :image="bañoPersona" 
+          :image="bañoPersona" 
           title="Gerente" 
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean convallis magna quis lectus fermentum, quis scelerisque orci pellentesque. Duis id porta justo. Sed ac enim id justo tincidunt hendrerit id ac lectus. Pellentesque maximus posuere tortor vitae consequat."
         />
@@ -44,7 +44,7 @@
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean convallis magna quis lectus fermentum, quis scelerisque orci pellentesque. Duis id porta justo."
         />
         <Testimonials 
-        :image="baño4" 
+          :image="baño4" 
           title="Diseñador" 
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean convallis magna quis lectus fermentum."
         />
@@ -53,7 +53,7 @@
     <br>
     <br>
     <br>
-    <div class="contacto" id="contactos">
+    <div class="contacto fade" id="contactos">
       <Contact />
     </div>
   </div>
@@ -85,9 +85,38 @@ const scrollToContact = () => {
   }
 };
 
+const observeElements = () => {
+  const elementsToObserve = document.querySelectorAll('.fade');
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('fade-visible');
+        observer.unobserve(entry.target); // Dejar de observar después de mostrar
+      }
+    });
+  }, { threshold: 0.2 }); // Detecta cuando el 20% del elemento es visible
+
+  elementsToObserve.forEach(element => observer.observe(element));
+};
+
+onMounted(() => {
+  observeElements();
+});
+
 </script>
 
 <style scoped>
+  .fade {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  
+  .fade-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 .redirigir-contacto {
   position: fixed;
   bottom: 2rem;
