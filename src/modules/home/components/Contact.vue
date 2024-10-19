@@ -100,7 +100,7 @@ const submitForm = () => {
     mensaje: form.value.mensaje,
   };
 
-  const numeroTelefono = "3177289785";
+  const numeroTelefono = "+17865532320";
   const mensajeWhatsApp = `
     ¡Hi!
     
