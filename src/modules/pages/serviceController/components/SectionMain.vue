@@ -16,7 +16,7 @@
             <p class="mt-6 text-lg leading-8 text-gray-300">{{ translations.expertos }}</p>
           </div>
           <div class="relative h-80 lg:mt-8 custom">
-            <img src="../../../../assets/img/logo.png" alt="App screenshot" width="1824" height="1080" />
+            <img src="../../../../assets/img/logoconquer.png" alt="App screenshot" width="1824" height="1080" />
           </div>
         </div>
       </div>

@@ -34,19 +34,19 @@
       </div>
       <div class="testimonials-wrapper">
         <Testimonials 
-          :image="bañoPersona" 
-          title="Gerente" 
-          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean convallis magna quis lectus fermentum, quis scelerisque orci pellentesque. Duis id porta justo. Sed ac enim id justo tincidunt hendrerit id ac lectus. Pellentesque maximus posuere tortor vitae consequat."
+          :image="cocina3" 
+          title="Ana Rodriguez" 
+          :description="translations.testimonio1"
         />
         <Testimonials 
-          :image="cocina3" 
-          title="Desarrollador" 
-          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean convallis magna quis lectus fermentum, quis scelerisque orci pellentesque. Duis id porta justo."
+          :image="bañoPersona" 
+          title="Javier Lopez" 
+          :description="translations.testimonio2"
         />
         <Testimonials 
           :image="baño4" 
-          title="Diseñador" 
-          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean convallis magna quis lectus fermentum."
+          title="Christian Mendoza" 
+          :description="translations.testimonio3"
         />
       </div>
     </div>

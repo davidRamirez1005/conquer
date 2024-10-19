@@ -16,6 +16,9 @@
           <p class="text-lg font-semibold mt-6 mb-2">{{translations.correo}}</p>
           <p class="text-gray-400">joseroa7725@gmail.com</p>
         </div>
+        <div class="flex justify-center mt-8">
+          <img src="../../../assets/img/logoconquer.png" alt="" width="120">
+        </div>
       </div>
       <div class="md:w-2/3">
         <div class="formulario">
@@ -23,6 +26,7 @@
             <div class="mb-4">
               <label for="name" class="block text-lg font-semibold mb-2">{{translations.nombre}}</label>
               <input
+                v-model="form.nombre"
                 type="text"
                 id="name"
                 class="w-full px-3 py-2 text-gray-700 bg-gray-200 rounded"
@@ -31,6 +35,7 @@
             <div class="mb-4">
               <label for="email" class="block text-lg font-semibold mb-2">{{translations.correo}}</label>
               <input
+                v-model="form.email"
                 type="email"
                 id="email"
                 class="w-full px-3 py-2 text-gray-700 bg-gray-200 rounded"
@@ -39,11 +44,13 @@
             <div class="mb-4">
               <label for="message" class="block text-lg font-semibold mb-2">{{translations.mensaje}}</label>
               <textarea
+                v-model="form.mensaje"
                 id="message"
                 class="w-full px-3 py-2 text-gray-700 bg-gray-200 rounded"
               ></textarea>
             </div>
             <button
+              @click="submitForm"
               type="submit"
               class="w-full py-2 bg-gray-700 text-white font-semibold rounded hover:bg-gray-500 transition-all duration-300 ease-in-out"
             >
@@ -78,6 +85,45 @@ import { ref } from 'vue';
 import { useLanguageProvider } from '../../../store/useLanguage.js';
 
 const { translations, language } = useLanguageProvider();
+
+const form = ref({
+  nombre: '',
+  email: '',
+  mensaje: '',
+});
+
+// Submit form
+const submitForm = () => {
+  const formData = {
+    nombre: form.value.nombre,
+    email: form.value.email,
+    mensaje: form.value.mensaje,
+  };
+
+  const numeroTelefono = "3177289785";
+  const mensajeWhatsApp = `
+    ¡Hi!
+    
+    Name: ${formData.nombre}.
+
+    Email: ${formData.email}.
+    
+    ${formData.mensaje}
+  `;
+
+  try {
+    window.open(
+      `https://wa.me/${numeroTelefono}?text=${encodeURIComponent(
+        mensajeWhatsApp
+      )}`,
+      "_blank"
+    );
+    alert('Mensajes enviados exitosamente');
+  } catch (error) {
+    console.error('Error enviando mensajes:', error);
+    alert('Hubo un error enviando los mensajes');
+  }
+};
 </script>
 
 <style scoped>

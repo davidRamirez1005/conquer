@@ -6,8 +6,8 @@
     <div class="fade">
       <Gallery />
     </div>
-    <div>
-      <!-- <GalleryTab />478 -->
+    <div style="display: flex; justify-content: center;">
+      <img src="../../../assets/img/logoconquer.png" alt="">
     </div>
     <div class="PiePages fade">
       <PiePages />
@@ -53,4 +53,5 @@ onMounted(() => {
     opacity: 1;
     transform: translateY(0);
   }
+
 </style>

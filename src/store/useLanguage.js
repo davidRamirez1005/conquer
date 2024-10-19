@@ -12,7 +12,7 @@ export const useLanguage = () => {
 
   const changeLanguage = (lang) => {
     language.value = lang;
-    translations.value = lang === 'es' ? es : en;
+    translations.value = lang === 'en' ? en : es;
     localStorage.setItem('language', lang); // Guardar el idioma en localStorage
   };
 
