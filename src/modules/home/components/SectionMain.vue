@@ -14,8 +14,8 @@
           <div class="mx-auto max-w-md text-center lg:mx-0 lg:flex-auto lg:py-32 lg:text-left">
             <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">{{ translations.BuildingTrust }}</h2>
             <p class="mt-6 text-lg leading-8 text-gray-300">{{ translations.expertos }}</p>
-            <div class="mt-10 flex items-center justify-center gap-x-6 ">
-              <a href="#" class="text-sm font-semibold leading-6 text-white">{{ translations.verMas }}<span aria-hidden="true">→</span></a>
+            <div class="mt-10 flex items-center justify-center gap-x-6 " style="cursor: pointer;">
+              <a @click="handleScroll('services')" class="text-sm font-semibold leading-6 text-white">{{ translations.verMas }}<span aria-hidden="true">→</span></a>
             </div>
           </div>
           <div class="relative h-80 lg:mt-8 custom">
@@ -30,8 +30,21 @@
 <script setup>
 import { ref } from 'vue';
 import { useLanguageProvider } from '../../../store/useLanguage.js';
+import { useRouter, useRoute } from 'vue-router';
 
+const router = useRouter();
 const { translations } = useLanguageProvider();
+
+const handleScroll = (name) => {
+    if (name === 'services') {
+      router.push('/servicios').then(() => {
+        const contactSection = document.getElementById('inicio-servicios');
+        if (contactSection) {
+          contactSection.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    }
+  };
 </script>
 
 <style scoped>
