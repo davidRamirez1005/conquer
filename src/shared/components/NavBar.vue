@@ -114,7 +114,7 @@ const route = useRoute();
 const navigation = [
   { name: 'home', href: '/' },
   { name: 'aboutUs', href: '/' },
-  { name: 'services', href: '/servicios' },
+  { name: 'services', href: '/Services' },
   { name: 'projects', href: '/proyectos' },
   { name: 'contactUs', href: '/' },
 ];
@@ -130,7 +130,7 @@ const handleScroll = (name) => {
     });
   }
   if (name === 'services') {
-    router.push('/servicios').then(() => {
+    router.push('/Services').then(() => {
       const contactSection = document.getElementById('inicio-servicios');
       if (contactSection) {
         contactSection.scrollIntoView({ behavior: 'smooth' });
@@ -138,7 +138,7 @@ const handleScroll = (name) => {
     });
   }
   if (name === 'projects') {
-    router.push('/proyectos').then(() => {
+    router.push('/Projects').then(() => {
       const contactSection = document.getElementById('inicio-proyectos');
       if (contactSection) {
         contactSection.scrollIntoView({ behavior: 'smooth' });

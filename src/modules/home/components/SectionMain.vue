@@ -37,7 +37,7 @@ const { translations } = useLanguageProvider();
 
 const handleScroll = (name) => {
     if (name === 'services') {
-      router.push('/servicios').then(() => {
+      router.push({ name: 'servicios' }).then(() => {
         const contactSection = document.getElementById('inicio-servicios');
         if (contactSection) {
           contactSection.scrollIntoView({ behavior: 'smooth' });

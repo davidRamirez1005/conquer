@@ -86,7 +86,7 @@
                   <p class="title">{{ translations.despues }}</p>
                   <img
                     class="h-auto max-w-full rounded-lg object-cover object-center"
-                    src="../../../../assets/img/img13.png"
+                    src="../../../../assets/img/img18.png"
                     alt="gallery-photo"
                   />
               </div>
@@ -105,7 +105,7 @@
         <div>
           <img
             class="h-auto max-w-full rounded-lg object-cover object-center"
-            src="../../../../assets/img/img10.png"
+            src="../../../../assets/img/img25.png"
             alt="gallery-photo"
           />
         </div>
@@ -113,6 +113,68 @@
           <img
             class="h-auto max-w-full rounded-lg object-cover object-center"
             src="../../../../assets/img/img14.png"
+            alt="gallery-photo"
+          />
+        </div>
+      </div>
+      <div class="grid gap-4">
+        <div>
+          <img
+            class="h-auto max-w-full rounded-lg object-cover object-center"
+            src="../../../../assets/img/img20.png"
+            alt="gallery-photo"
+          />
+        </div>
+      </div>
+      <div class="grid gap-4">
+        <div class="flip-card">
+          <div class="flip-card-inner">
+              <div class="flip-card-front">
+                  <p class="title">{{ translations.despues }}</p>
+                  <img
+                    class="h-auto max-w-full rounded-lg object-cover object-center"
+                    src="../../../../assets/img/img17.png"
+                    alt="gallery-photo"
+                  />
+              </div>
+              <div class="flip-card-back">
+                  <p class="title">{{ translations.antes }}</p>
+                  <img
+                    class="h-auto max-w-full rounded-lg object-cover object-center "
+                    src="../../../../assets/img/img16.png"
+                    alt="gallery-photo"
+                  />
+              </div>
+          </div>
+        </div>
+      </div>
+      <div class="grid gap-4">
+        <div class="flip-card">
+          <div class="flip-card-inner">
+              <div class="flip-card-front">
+                  <p class="title">{{ translations.despues }}</p>
+                  <img
+                    class="h-auto max-w-full rounded-lg object-cover object-center"
+                    src="../../../../assets/img/img21.png"
+                    alt="gallery-photo"
+                  />
+              </div>
+              <div class="flip-card-back">
+                  <p class="title">{{ translations.antes }}</p>
+                  <img
+                    class="h-auto max-w-full rounded-lg object-cover object-center "
+                    src="../../../../assets/img/img24.png"
+                    alt="gallery-photo"
+                  />
+              </div>
+          </div>
+        </div>
+      </div>
+      <div class="grid gap-4">
+        <div>
+          <img
+            class="h-auto max-w-full rounded-lg object-cover object-center"
+            src="../../../../assets/img/img23.png"
             alt="gallery-photo"
           />
         </div>
@@ -149,7 +211,7 @@ const { translations } = useLanguageProvider();
   width: 100%;
   height: 100%;
   text-align: center;
-  transition: transform 0.8s;
+  transition: transform 0.6s;
   transform-style: preserve-3d;
 }
 
@@ -158,16 +220,12 @@ const { translations } = useLanguageProvider();
 }
 
 .flip-card-front, .flip-card-back {
-  box-shadow: 0 8px 14px 0 rgba(0,0,0,0.2);
   position: absolute;
-  display: flex;
-  flex-direction: column;
-  /* justify-content: center; */
   width: 100%;
-  height: 95%;
-  -webkit-backface-visibility: hidden;
+  height: 100%;
   backface-visibility: hidden;
-  border-radius: 1rem;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 .flip-card-front {

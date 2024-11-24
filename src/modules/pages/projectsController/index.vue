@@ -1,5 +1,5 @@
 <template>
-<div id="inicio-proyectos">
+  <div id="inicio-proyectos">
     <div class="fade">
       <Banner />
     </div>
@@ -29,10 +29,10 @@ const observeElements = () => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('fade-visible');
-        observer.unobserve(entry.target); // Dejar de observar después de mostrar
+        observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.2 }); // Detecta cuando el 20% del elemento es visible
+  }, { threshold: 0.2 });
 
   elementsToObserve.forEach(element => observer.observe(element));
 };

@@ -55,7 +55,7 @@
             <h1 class="mt-2 text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl text-center">{{ translations.beneficios }}</h1>
             <div class="row cont-ben">
                 <div class="col-4 cont-img">
-                    <img src="../../../../assets/img/Group.png" alt="">
+                    <img src="../../../../assets/img/img10.png" alt="" style="border-radius: 10px;">
                 </div>
                 <div class="col cont-ul p-4">
                     <ul class="list-disc list-inside">
